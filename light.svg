@@ -1,0 +1,438 @@
+<svg viewBox="0 0 1180 610" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="lightBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F3F4F6;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Accent Gradients for ASCII and Text -->
+    <linearGradient id="asciiGradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:1">
+        <animate attributeName="stop-color" values="#2563EB;#06B6D4;#10B981;#2563EB" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1">
+        <animate attributeName="stop-color" values="#06B6D4;#10B981;#2563EB;#06B6D4" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <linearGradient id="accentGradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563EB" />
+      <stop offset="50%" style="stop-color:#06B6D4" />
+      <stop offset="100%" style="stop-color:#10B981" />
+    </linearGradient>
+
+    <linearGradient id="accentGradientLight2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4" />
+      <stop offset="100%" style="stop-color:#2563EB" />
+    </linearGradient>
+
+    <!-- Radial Glow Gradients (Softer for Light Mode) -->
+    <radialGradient id="glowBlueLight">
+      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:0" />
+    </radialGradient>
+
+    <radialGradient id="glowCyanLight">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:0" />
+    </radialGradient>
+
+    <radialGradient id="glowEmeraldLight">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Glass Morphism Filter -->
+    <filter id="glassFilterLight">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
+    </filter>
+
+    <filter id="softGlowLight">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5" />
+      </feComponentTransfer>
+    </filter>
+
+    <filter id="strongGlowLight">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.7" />
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Noise Texture -->
+    <filter id="noiseLight">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" />
+      <feColorMatrix in="noise" type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.02" />
+      </feComponentTransfer>
+      <feComposite in="SourceGraphic" in2="noise" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
+    </filter>
+
+    <!-- Scanline Animation -->
+    <pattern id="scanlinesLight" x="0" y="0" width="100%" height="2" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="100%" y2="0" stroke="rgba(15,23,42,0.01)" stroke-width="2" />
+    </pattern>
+
+    <!-- Shine Effect -->
+    <linearGradient id="shineLight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0);stop-opacity:0" />
+      <stop offset="50%" style="stop-color:rgba(255,255,255,0.3);stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:0" />
+    </linearGradient>
+
+    <!-- Clip Paths -->
+    <clipPath id="clipLeftLight">
+      <rect x="0" y="0" width="450" height="610" rx="12" />
+    </clipPath>
+
+    <clipPath id="clipRightLight">
+      <rect x="450" y="0" width="730" height="610" rx="12" />
+    </clipPath>
+
+    <!-- Text Styles -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;600;700&display=swap');
+
+      .ascii-text-light {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        line-height: 1.2;
+        fill: url(#asciiGradientLight);
+        filter: url(#strongGlowLight);
+      }
+
+      .title-text-light {
+        font-family: 'Inter', sans-serif;
+        font-size: 48px;
+        font-weight: 700;
+        fill: #0F172A;
+        letter-spacing: -1px;
+      }
+
+      .subtitle-text-light {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 20px;
+        font-weight: 600;
+        fill: url(#accentGradientLight2);
+      }
+
+      .label-text-light {
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        fill: #64748B;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+      }
+
+      .info-text-light {
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        fill: #334155;
+      }
+
+      .skill-text-light {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        fill: #0F172A;
+      }
+
+      .cursor-light {
+        fill: #06B6D4;
+        animation: blinkLight 1s infinite;
+      }
+
+      @keyframes blinkLight {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1180" height="610" fill="url(#lightBg)" />
+
+  <!-- Animated Radial Glows (Subtle) -->
+  <circle cx="150" cy="100" r="300" fill="url(#glowBlueLight)">
+    <animate attributeName="r" values="250;350;250" dur="6s" repeatCount="indefinite" />
+  </circle>
+
+  <circle cx="1000" cy="500" r="280" fill="url(#glowCyanLight)">
+    <animate attributeName="r" values="200;300;200" dur="7s" repeatCount="indefinite" />
+  </circle>
+
+  <circle cx="600" cy="300" r="250" fill="url(#glowEmeraldLight)">
+    <animate attributeName="r" values="200;280;200" dur="8s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- Noise Overlay -->
+  <rect width="1180" height="610" fill="black" opacity="0.002" />
+
+  <!-- Scanlines -->
+  <rect width="1180" height="610" fill="url(#scanlinesLight)" opacity="0.2">
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0,0; 0,4"
+      dur="0.15s"
+      repeatCount="indefinite" />
+  </rect>
+
+  <!-- Main Container with rounded corners -->
+  <g>
+    <!-- LEFT SECTION - ASCII ART -->
+    <g clip-path="url(#clipLeftLight)">
+      <!-- Glass Panel Background -->
+      <rect x="20" y="20" width="410" height="570" rx="12" fill="rgba(248,250,252,0.6)" stroke="rgba(15,23,42,0.08)" stroke-width="1" filter="url(#glassFilterLight)" />
+
+      <!-- Glass Shine Effect -->
+      <rect x="20" y="20" width="410" height="80" rx="12" fill="url(#shineLight)" opacity="0.1" />
+
+      <!-- ASCII Art Portrait with Animation -->
+      <g transform="translate(60, 80)">
+        <!-- Floating Animation -->
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          values="60,80; 60,85; 60,80"
+          dur="4s"
+          repeatCount="indefinite"
+          additive="sum" />
+
+        <!-- ASCII Lines with Sequential Reveal -->
+        <text x="0" y="0" class="ascii-text-light" opacity="0">
+          ██╗     ██╗██╗   ██╗███╗   ███╗
+          <animate attributeName="opacity" values="0;1;1" dur="0.5s" begin="0s" fill="freeze" />
+        </text>
+
+        <text x="0" y="18" class="ascii-text-light" opacity="0">
+          ██║     ██║██║   ██║████╗ ████║
+          <animate attributeName="opacity" values="0;1;1" dur="0.5s" begin="0.3s" fill="freeze" />
+        </text>
+
+        <text x="0" y="36" class="ascii-text-light" opacity="0">
+          ██║     ██║██║   ██║██╔████╔██║
+          <animate attributeName="opacity" values="0;1;1" dur="0.5s" begin="0.6s" fill="freeze" />
+        </text>
+
+        <text x="0" y="54" class="ascii-text-light" opacity="0">
+          ██║     ██║██║   ██║██║╚██╔╝██║
+          <animate attributeName="opacity" values="0;1;1" dur="0.5s" begin="0.9s" fill="freeze" />
+        </text>
+
+        <text x="0" y="72" class="ascii-text-light" opacity="0">
+          ███████╗██║ ╚████╔╝ ██║ ╚═╝ ██║
+          <animate attributeName="opacity" values="0;1;1" dur="0.5s" begin="1.2s" fill="freeze" />
+        </text>
+
+        <text x="0" y="90" class="ascii-text-light" opacity="0">
+          ╚══════╝╚═╝  ╚═══╝  ╚═╝     ╚═╝
+          <animate attributeName="opacity" values="0;1;1" dur="0.5s" begin="1.5s" fill="freeze" />
+        </text>
+      </g>
+
+      <!-- Decorative Elements -->
+      <circle cx="225" cy="350" r="50" fill="none" stroke="url(#accentGradientLight)" stroke-width="1" opacity="0.3">
+        <animate attributeName="r" values="40;60;40" dur="4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.15;0.3;0.15" dur="4s" repeatCount="indefinite" />
+      </circle>
+
+      <circle cx="225" cy="350" r="40" fill="none" stroke="url(#accentGradientLight2)" stroke-width="1" opacity="0.2">
+        <animate attributeName="r" values="60;40;60" dur="5s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.1;0.2;0.1" dur="5s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- Bottom Accent Line -->
+      <line x1="60" y1="450" x2="370" y2="450" stroke="url(#accentGradientLight)" stroke-width="2" opacity="0.2">
+        <animate attributeName="x1" values="60;80;60" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="x2" values="370;350;370" dur="3s" repeatCount="indefinite" />
+      </line>
+    </g>
+
+    <!-- RIGHT SECTION - TERMINAL CONTENT -->
+    <g clip-path="url(#clipRightLight)">
+      <!-- Glass Panel Background -->
+      <rect x="470" y="20" width="700" height="570" rx="12" fill="rgba(248,250,252,0.6)" stroke="rgba(15,23,42,0.08)" stroke-width="1" filter="url(#glassFilterLight)" />
+
+      <!-- Glass Shine Effect -->
+      <rect x="470" y="20" width="700" height="100" rx="12" fill="url(#shineLight)" opacity="0.08" />
+
+      <!-- Top Bar -->
+      <rect x="470" y="20" width="700" height="50" rx="12" fill="rgba(15,23,42,0.02)" stroke-bottom="1px solid rgba(15,23,42,0.05)" />
+
+      <!-- Terminal Dots -->
+      <circle cx="500" cy="45" r="4" fill="#EF4444" opacity="0.5" />
+      <circle cx="520" cy="45" r="4" fill="#FBBF24" opacity="0.5" />
+      <circle cx="540" cy="45" r="4" fill="#10B981" opacity="0.5" />
+
+      <!-- Content Area -->
+      <g transform="translate(510, 90)">
+        <!-- Greeting -->
+        <text x="0" y="0" class="label-text-light" opacity="0">
+          $ Hey there 👋
+          <animate attributeName="opacity" values="0;1;1" dur="0.3s" begin="1.8s" fill="freeze" />
+        </text>
+
+        <!-- Name -->
+        <text x="0" y="32" class="title-text-light" opacity="0">
+          I'm Likhith
+          <animate attributeName="opacity" values="0;1;1" dur="0.3s" begin="2.2s" fill="freeze" />
+        </text>
+
+        <!-- Animated Role -->
+        <text x="0" y="68" class="subtitle-text-light" opacity="0">
+          <tspan>Frontend Engineer</tspan>
+          <animate attributeName="opacity" values="0;1;0" dur="3s" begin="2.8s" />
+        </text>
+
+        <text x="0" y="68" class="subtitle-text-light" opacity="0">
+          <tspan>Full Stack Developer</tspan>
+          <animate attributeName="opacity" values="0;0;1;1;0" dur="3s" begin="5.8s" />
+        </text>
+
+        <text x="0" y="68" class="subtitle-text-light" opacity="0">
+          <tspan>AI Enthusiast</tspan>
+          <animate attributeName="opacity" values="0;0;1;1;0" dur="3s" begin="8.8s" />
+        </text>
+
+        <!-- Cursor -->
+        <rect x="370" y="56" width="2" height="20" class="cursor-light" />
+
+        <!-- Info Section -->
+        <g opacity="0">
+          <animate attributeName="opacity" values="0;1;1" dur="0.3s" begin="3.2s" fill="freeze" />
+
+          <text x="0" y="130" class="label-text-light">📍 Location</text>
+          <text x="0" y="152" class="info-text-light">India</text>
+
+          <text x="200" y="130" class="label-text-light">🎓 Education</text>
+          <text x="200" y="152" class="info-text-light">B.Tech in CS</text>
+
+          <text x="0" y="195" class="label-text-light">🚀 Current Focus</text>
+          <text x="0" y="217" class="info-text-light">React & TypeScript</text>
+
+          <text x="200" y="195" class="label-text-light">💼 Portfolio</text>
+          <text x="200" y="217" class="info-text-light">likhithsai.dev</text>
+
+          <text x="0" y="260" class="label-text-light">✉️ Email</text>
+          <text x="0" y="282" class="info-text-light">hello@likhithsai.dev</text>
+        </g>
+
+        <!-- Skills Section -->
+        <g opacity="0">
+          <animate attributeName="opacity" values="0;1;1" dur="0.3s" begin="3.6s" fill="freeze" />
+
+          <text x="0" y="340" class="label-text-light">💻 Skills</text>
+
+          <!-- Skill Pills -->
+          <g>
+            <!-- React -->
+            <rect x="0" y="355" width="65" height="28" rx="14" fill="rgba(6,182,212,0.08)" stroke="url(#accentGradientLight2)" stroke-width="1" opacity="0.7">
+              <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite" />
+            </rect>
+            <text x="32" y="375" class="skill-text-light" text-anchor="middle">React</text>
+
+            <!-- TypeScript -->
+            <rect x="85" y="355" width="85" height="28" rx="14" fill="rgba(37,99,235,0.08)" stroke="url(#accentGradientLight)" stroke-width="1" opacity="0.7">
+              <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" begin="0.3s" repeatCount="indefinite" />
+            </rect>
+            <text x="127" y="375" class="skill-text-light" text-anchor="middle">TypeScript</text>
+
+            <!-- Next.js -->
+            <rect x="190" y="355" width="70" height="28" rx="14" fill="rgba(16,185,129,0.08)" stroke="url(#accentGradientLight)" stroke-width="1" opacity="0.7">
+              <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" begin="0.6s" repeatCount="indefinite" />
+            </rect>
+            <text x="225" y="375" class="skill-text-light" text-anchor="middle">Next.js</text>
+
+            <!-- Node.js -->
+            <rect x="290" y="355" width="75" height="28" rx="14" fill="rgba(6,182,212,0.08)" stroke="url(#accentGradientLight2)" stroke-width="1" opacity="0.7">
+              <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" begin="0.9s" repeatCount="indefinite" />
+            </rect>
+            <text x="327" y="375" class="skill-text-light" text-anchor="middle">Node.js</text>
+
+            <!-- Python -->
+            <rect x="0" y="400" width="65" height="28" rx="14" fill="rgba(37,99,235,0.08)" stroke="url(#accentGradientLight)" stroke-width="1" opacity="0.7">
+              <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" begin="1.2s" repeatCount="indefinite" />
+            </rect>
+            <text x="32" y="420" class="skill-text-light" text-anchor="middle">Python</text>
+
+            <!-- PostgreSQL -->
+            <rect x="85" y="400" width="90" height="28" rx="14" fill="rgba(16,185,129,0.08)" stroke="url(#accentGradientLight)" stroke-width="1" opacity="0.7">
+              <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" begin="1.5s" repeatCount="indefinite" />
+            </rect>
+            <text x="130" y="420" class="skill-text-light" text-anchor="middle">PostgreSQL</text>
+
+            <!-- Docker -->
+            <rect x="195" y="400" width="65" height="28" rx="14" fill="rgba(6,182,212,0.08)" stroke="url(#accentGradientLight2)" stroke-width="1" opacity="0.7">
+              <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" begin="1.8s" repeatCount="indefinite" />
+            </rect>
+            <text x="227" y="420" class="skill-text-light" text-anchor="middle">Docker</text>
+
+            <!-- Tailwind -->
+            <rect x="290" y="400" width="75" height="28" rx="14" fill="rgba(37,99,235,0.08)" stroke="url(#accentGradientLight)" stroke-width="1" opacity="0.7">
+              <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" begin="2.1s" repeatCount="indefinite" />
+            </rect>
+            <text x="327" y="420" class="skill-text-light" text-anchor="middle">Tailwind</text>
+          </g>
+        </g>
+
+        <!-- Social Links -->
+        <g opacity="0">
+          <animate attributeName="opacity" values="0;1;1" dur="0.3s" begin="4s" fill="freeze" />
+
+          <g transform="translate(0, 470)">
+            <!-- GitHub Icon -->
+            <circle cx="20" cy="20" r="18" fill="none" stroke="url(#accentGradientLight2)" stroke-width="1.5" opacity="0.5">
+              <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite" />
+            </circle>
+            <text x="20" y="26" text-anchor="middle" class="skill-text-light" font-size="16">◉</text>
+
+            <!-- LinkedIn Icon -->
+            <circle cx="70" cy="20" r="18" fill="none" stroke="url(#accentGradientLight)" stroke-width="1.5" opacity="0.5">
+              <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" begin="0.3s" repeatCount="indefinite" />
+            </circle>
+            <text x="70" y="26" text-anchor="middle" class="skill-text-light" font-size="16">◉</text>
+
+            <!-- Twitter Icon -->
+            <circle cx="120" cy="20" r="18" fill="none" stroke="url(#accentGradientLight2)" stroke-width="1.5" opacity="0.5">
+              <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" begin="0.6s" repeatCount="indefinite" />
+            </circle>
+            <text x="120" y="26" text-anchor="middle" class="skill-text-light" font-size="16">◉</text>
+
+            <!-- Portfolio Icon -->
+            <circle cx="170" cy="20" r="18" fill="none" stroke="url(#accentGradientLight)" stroke-width="1.5" opacity="0.5">
+              <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" begin="0.9s" repeatCount="indefinite" />
+            </circle>
+            <text x="170" y="26" text-anchor="middle" class="skill-text-light" font-size="16">◉</text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- Border Shimmer Effect -->
+  <defs>
+    <linearGradient id="borderShimmerLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(37,99,235,0);stop-opacity:0" />
+      <stop offset="50%" style="stop-color:rgba(6,182,212,0.2);stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:rgba(16,185,129,0);stop-opacity:0" />
+    </linearGradient>
+  </defs>
+
+  <rect x="20" y="20" width="1140" height="570" rx="12" fill="none" stroke="url(#borderShimmerLight)" stroke-width="1" opacity="0.5">
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0,0; 50,50; 0,0"
+      dur="6s"
+      repeatCount="indefinite" />
+  </rect>
+</svg>
